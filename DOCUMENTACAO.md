@@ -241,13 +241,11 @@ Cada story pode ter N imagens; ao tocar na bolha abre um visualizador fullscreen
 
 ## 3. Autenticação
 
-**Status atual: não implementada.** Não há nenhuma rota de login, nenhum uso de `@supabase/ssr`/`@supabase/supabase-js` no código, nenhum middleware de proteção de rota. A única rota pública hoje (`/[slug]`) não exige login.
+**Status atual: implementada pra um único papel (produtor).** Supabase Auth com email/senha, um usuário criado manualmente (`ariusbio@gmail.com`). Rota protegida: `/admin/*`. Proteção via `src/proxy.ts` — **atenção: não é `middleware.ts`**, o Next 16 renomeou esse arquivo/convenção pra `proxy.ts`/função `proxy` (ver `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md`; usar `middleware.ts` nessa versão gera warning de depreciação e é o padrão antigo). O proxy usa `@supabase/ssr` (`createServerClient` com cookies) pra checar sessão a cada request em `/admin/**`, redirecionando pra `/admin/login` se não autenticado.
 
-**Planejado:**
-- Provedor: Supabase Auth (e-mail/senha, possivelmente magic link — não decidido).
-- Dois papéis: `producer` e `client`, controlados por uma tabela `profiles.role`.
-- Rotas protegidas planejadas: `(dashboard)/produtor/*`, `(dashboard)/cliente/*`, `(dashboard)/builder/*` — nenhuma dessas pastas existe ainda no código.
-- Proteção via middleware Next.js + client Supabase SSR (`@supabase/ssr`) checando sessão antes de liberar acesso ao grupo `(dashboard)`, redirecionando para login se não autenticado. Ainda não implementado.
+**Ainda planejado:**
+- Segundo papel `client` (dono do negócio, edição restrita só de imagens liberadas) — hoje só existe o papel produtor.
+- Controle de papéis via tabela `profiles.role` (hoje é usuário único, sem tabela de papéis).
 - A rota pública `/[slug]` permanece sem autenticação, pois é a página vista pelo consumidor final.
 
 ---
@@ -259,9 +257,15 @@ Rotas que **existem de fato** no código hoje (`src/app`):
 | Rota | Arquivo | O que faz |
 |---|---|---|
 | `/` | `src/app/page.tsx` | Landing simples: título "Biosite Platform", texto avisando que o painel/builder ainda estão em construção, e um botão que leva ao biosite de exemplo (`/sabor-arte-bistro`). |
-| `/[slug]` | `src/app/(public)/[slug]/page.tsx` | Página pública do biosite. Busca dados via `getBiositeBySlug` (`src/lib/get-biosite.ts`) na tabela `biosites` do Supabase; slug sem registro retorna `notFound()`. Hoje só existe o registro `sabor-arte-bistro` (seed em `supabase/migrations/`). Renderiza `<BiositePage>` com todas as seções (ver componentes abaixo). |
+| `/[slug]` | `src/app/(public)/[slug]/page.tsx` | Página pública do biosite. Busca dados via `getBiositeBySlug` (`src/lib/get-biosite.ts`) na tabela `biosites` do Supabase; slug sem registro retorna `notFound()`. Renderiza `<BiositePage>` com todas as seções (ver componentes abaixo). |
+| `/admin/login` | `src/app/admin/login/page.tsx` | Login do produtor (email/senha via Supabase Auth). Redireciona pra `/admin` se já logado. |
+| `/admin` | `src/app/admin/page.tsx` | Dashboard: lista todos os biosites cadastrados, link pra editar cada um, botão "Novo biosite", logout. Protegida pelo proxy. |
+| `/admin/new` | `src/app/admin/new/page.tsx` | Form pra criar biosite (nome, slug, WhatsApp, cores, avatar) — o resto do conteúdo (stories, destaques, blocks) vem de um template genérico (`src/lib/biosite-template.ts`), editável depois. |
+| `/admin/[slug]` | `src/app/admin/[slug]/page.tsx` | Editar biosite existente — campos amigáveis (nome/slug/whatsapp/cores/avatar/verificado) + uma textarea JSON pra conteúdo avançado (stories, hero, bento, combos, blocks etc.). Também apaga o biosite. |
 
-Rotas **planejadas, ainda inexistentes no código**: `(dashboard)/produtor/*`, `(dashboard)/cliente/*`, `(dashboard)/builder/*`, `api/track`, `api/domains`, `/preview/[template]`.
+Escrita em `/admin/*` (criar/editar/apagar) roda em Server Actions (`src/app/admin/actions.ts`) usando `supabaseAdmin` (`src/lib/supabase-admin.ts`, chave `service_role`, bypassa RLS) — sempre depois de checar a sessão do usuário logado.
+
+Rotas **planejadas, ainda inexistentes no código**: `(dashboard)/cliente/*` (login/edição restrita do cliente final), `api/track`, `api/domains`, `/preview/[template]`.
 
 ### Componentes que compõem a página `/[slug]` (todos em `src/components/biosite/`)
 Renderizados em ordem por `BiositePage.tsx`:
@@ -326,4 +330,4 @@ Nenhuma integração de API externa está "ativa" em tempo de execução hoje (s
 
 ## Observação final para uso deste documento como contexto de IA
 
-Este projeto saiu do "só mock": existe o **template público do biosite**, com design finalizado (via SuperDesign) e convertido em componentes React reais, já lendo de um banco Supabase real (`ariusbios`) em vez de dado estático. Ainda **sem autenticação e sem painel administrativo** — cadastro de biosite novo é manual (migration/dashboard), não existe builder. Qualquer sugestão de código que dependa de sessão de usuário ou rotas de dashboard deve primeiro **criar essa infraestrutura**, não assumir que ela já existe. O roadmap completo e as decisões de produto já tomadas estão em `/Users/euerickwilliam/.claude/plans/spicy-dazzling-journal.md`.
+Este projeto saiu do "só mock": existe o **template público do biosite**, com design finalizado (via SuperDesign) e convertido em componentes React reais, lendo de um banco Supabase real (`ariusbios`) em vez de dado estático, e um **painel produtor** (`/admin`, autenticado) pra criar/editar biosite sem precisar de SQL manual. Ainda **sem login do cliente final** e sem builder visual de verdade (a edição de conteúdo avançado no painel é um textarea JSON, não drag-and-drop). Qualquer sugestão de código que dependa de sessão do cliente final, upload de imagem via Storage, ou tracking/analytics deve primeiro **criar essa infraestrutura**, não assumir que ela já existe. O roadmap completo e as decisões de produto já tomadas estão em `/Users/euerickwilliam/.claude/plans/spicy-dazzling-journal.md`.

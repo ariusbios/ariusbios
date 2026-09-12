@@ -11,6 +11,8 @@ export function CombosSection({
 }) {
   const visibleCombos = combos.slice(0, MAX_COMBOS);
 
+  if (visibleCombos.length === 0) return null;
+
   return (
     <section className="bg-[#15181E] py-8">
       <div className="mb-5 px-5">

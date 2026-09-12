@@ -76,9 +76,9 @@ export function BiositePage({ data }: { data: BiositeData }) {
       className="relative flex h-screen w-full flex-col overflow-hidden bg-[var(--biosite-bg)] text-white"
       style={{ "--biosite-bg": data.backgroundColor } as React.CSSProperties}
     >
-      <BiositeHeader name={data.name} avatarUrl={data.avatarUrl} verified={data.verified} />
-
       <main className="custom-scrollbar relative flex-1 overflow-y-auto">
+        <BiositeHeader name={data.name} avatarUrl={data.avatarUrl} verified={data.verified} />
+
         <StoriesRow stories={data.stories} onOpenStory={setOpenStoryIndex} />
 
         <div className="mt-2">

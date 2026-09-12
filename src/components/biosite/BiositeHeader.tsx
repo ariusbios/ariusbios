@@ -20,7 +20,7 @@ export function BiositeHeader({
   };
 
   return (
-    <header className="sticky top-0 z-50 flex shrink-0 flex-col items-center bg-[var(--biosite-bg)]/80 px-5 pt-14 pb-6 backdrop-blur-md">
+    <header className="flex shrink-0 flex-col items-center px-5 pt-14 pb-6">
       <div className="mb-3 h-24 w-24 overflow-hidden rounded-full border-2 border-orange-500 p-1">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={avatarUrl} alt={name} className="h-full w-full rounded-full object-cover" />

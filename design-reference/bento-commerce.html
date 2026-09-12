@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/satoshi');
+        body { font-family: 'Satoshi', 'Plus Jakarta Sans', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+        .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: 12px; }
+        .bento-item-large { grid-row: span 2; grid-column: span 1; }
+        .pulse-glow { animation: pulse-glow 2s infinite; }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .bg-grain { background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png'); }
+        .gradient-ring { padding: 3px; background: linear-gradient(45deg, #FF6B6B, #FFD93D, #6BCB77); border-radius: 9999px; }
+        .animate-scroll { animation: scroll 15s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+</head>
+<body>
+    <div class="w-full h-screen flex flex-col bg-[#0F1115] text-white relative overflow-hidden" data-sd-id="1">
+        <!-- Header Bar -->
+        <header class="shrink-0 pt-14 px-5 pb-6 flex flex-col items-center bg-[#0F1115]/80 backdrop-blur-md sticky top-0 z-50 relative" data-sd-id="2">
+            <div class="w-16 h-16 rounded-full border-2 border-orange-500 p-0.5 overflow-hidden mb-3" data-sd-id="4">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="Logo" class="w-full h-full object-cover rounded-full" data-sd-id="5">
+            </div>
+            <div class="flex flex-col items-center" data-sd-id="6">
+                <div class="flex items-center gap-1.5 mb-1" data-sd-id="7">
+                    <h1 class="text-base font-bold tracking-tight" data-sd-id="8">Sabor &amp; Arte Bistro</h1>
+                    <iconify-icon icon="material-symbols:verified" class="text-blue-400 text-sm"></iconify-icon>
+                </div>
+                <div class="flex items-center gap-1.5 bg-green-500/10 px-2.5 py-1 rounded-full" data-sd-id="9">
+                    <span class="flex h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" data-sd-id="10"></span>
+                    <span class="text-[9px] font-bold text-green-400 uppercase tracking-widest" data-sd-id="11">Aberto Agora</span>
+                </div>
+            </div>
+            <button id="header-share-btn" class="absolute top-14 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors" data-sd-id="12">
+                <iconify-icon icon="lucide:share-2" class="text-lg"></iconify-icon>
+            </button>
+        </header>
+
+        <main class="flex-1 overflow-y-auto custom-scrollbar relative" data-sd-id="13">
+            <!-- Category Stories -->
+            <section class="px-5 py-2" data-sd-id="14">
+                <div class="flex gap-4 overflow-x-auto custom-scrollbar justify-center" data-sd-id="15">
+                    <div class="flex flex-col items-center gap-2 min-w-[70px]" data-sd-id="16">
+                        <div class="gradient-ring" data-sd-id="17">
+                            <div class="w-16 h-16 rounded-full border-2 border-[#0F1115] overflow-hidden" data-sd-id="18">
+                                <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="19">
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-semibold text-gray-300" data-sd-id="20">Cardápio</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 min-w-[70px]" data-sd-id="21">
+                        <div class="gradient-ring" data-sd-id="22">
+                            <div class="w-16 h-16 rounded-full border-2 border-[#0F1115] overflow-hidden" data-sd-id="23">
+                                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="24">
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-semibold text-gray-300" data-sd-id="25">Bolos</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 min-w-[70px]" data-sd-id="26">
+                        <div class="gradient-ring" data-sd-id="27">
+                            <div class="w-16 h-16 rounded-full border-2 border-[#0F1115] overflow-hidden" data-sd-id="28">
+                                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="29">
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-semibold text-gray-300" data-sd-id="30">Doces</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 min-w-[70px]" data-sd-id="31">
+                        <div class="gradient-ring opacity-50" data-sd-id="32">
+                            <div class="w-16 h-16 rounded-full border-2 border-[#0F1115] overflow-hidden" data-sd-id="33">
+                                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="34">
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-semibold text-gray-300" data-sd-id="35">Café</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Badge Pill -->
+            <div class="flex justify-center mt-2" data-sd-id="status-pill-container">
+                <div class="bg-green-500/10 border border-green-500/20 px-4 py-1.5 rounded-full flex items-center gap-2" data-sd-id="status-pill">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-[10px] font-bold text-green-400 uppercase tracking-widest">Aberto Agora</span>
+                </div>
+            </div>
+
+            <!-- Hero Carousel -->
+            <section class="relative w-full aspect-[4/5] mt-4 overflow-hidden" data-sd-id="36">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" alt="Special Pizza" data-sd-id="37">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1115] via-transparent to-transparent" data-sd-id="38"></div>
+                <div class="absolute top-6 left-6" data-sd-id="39">
+                    <span class="px-3 py-1.5 bg-orange-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg flex items-center gap-1" data-sd-id="40">
+                        MAIS PEDIDO 🔥
+                    </span>
+                </div>
+                <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-2" data-sd-id="41">
+                    <span class="w-2 h-2 rounded-full bg-orange-600" data-sd-id="42"></span>
+                    <span class="w-2 h-2 rounded-full bg-white/30" data-sd-id="43"></span>
+                    <span class="w-2 h-2 rounded-full bg-white/30" data-sd-id="44"></span>
+                </div>
+            </section>
+
+            <!-- Scarcity Bar -->
+            <section class="bg-orange-600 py-3 overflow-hidden relative" data-sd-id="45">
+                <div class="flex whitespace-nowrap animate-scroll items-center gap-6" data-sd-id="46">
+                    <span class="text-xs font-black uppercase tracking-tighter italic" data-sd-id="47">⏰ Promoção Só Hoje</span>
+                    <iconify-icon icon="lucide:zap" class="text-orange-200"></iconify-icon>
+                    <span class="text-xs font-black uppercase tracking-tighter italic" data-sd-id="48">Estoque Limitado</span>
+                    <iconify-icon icon="lucide:zap" class="text-orange-200"></iconify-icon>
+                    <span class="text-xs font-black uppercase tracking-tighter italic" data-sd-id="49">⏰ Promoção Só Hoje</span>
+                    <iconify-icon icon="lucide:zap" class="text-orange-200"></iconify-icon>
+                    <span class="text-xs font-black uppercase tracking-tighter italic" data-sd-id="50">Estoque Limitado</span>
+                </div>
+            </section>
+
+            <!-- Social Proof -->
+            <section class="px-5 py-6 flex items-center justify-between border-b border-white/5" data-sd-id="51">
+                <div class="flex items-center" data-sd-id="52">
+                    <div class="flex -space-x-2" data-sd-id="53">
+                        <img class="w-7 h-7 rounded-full border-2 border-[#0F1115]" src="https://i.pravatar.cc/100?u=1" data-sd-id="54"> 
+                        <img class="w-7 h-7 rounded-full border-2 border-[#0F1115]" src="https://i.pravatar.cc/100?u=2" data-sd-id="55"> 
+                        <img class="w-7 h-7 rounded-full border-2 border-[#0F1115]" src="https://i.pravatar.cc/100?u=3" data-sd-id="56"> 
+                    </div>
+                    <span class="ml-3 text-[12px] font-medium text-gray-400" data-sd-id="57">+500 pedidos esta semana</span>
+                </div>
+                <div class="flex items-center gap-1" data-sd-id="58">
+                    <iconify-icon icon="material-symbols:star" class="text-yellow-400 text-sm"></iconify-icon>
+                    <span class="text-xs font-bold" data-sd-id="59">4.9</span>
+                    <span class="text-[10px] text-gray-500 font-medium" data-sd-id="60">(1.2k)</span>
+                </div>
+            </section>
+
+            <!-- Bento Storefront -->
+            <section class="px-5 py-8" data-sd-id="61">
+                <h2 class="text-xl font-extrabold mb-6 tracking-tight" data-sd-id="62">Destaques da Casa</h2>
+                <div class="bento-grid" data-sd-id="63">
+                    <div class="bento-item-large relative rounded-2xl overflow-hidden group" data-sd-id="64">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="65">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" data-sd-id="66"></div>
+                        <div class="absolute bottom-3 left-3 right-3" data-sd-id="67">
+                            <p class="text-[11px] font-bold text-orange-400" data-sd-id="68">MAIS VENDIDO</p>
+                            <h3 class="text-sm font-bold leading-tight" data-sd-id="69">Pizza Trufada</h3>
+                            <div class="mt-2 flex items-center justify-between" data-sd-id="70">
+                                <span class="text-sm font-black" data-sd-id="71">R$ 89</span>
+                                <button id="bento-btn-1" class="bg-orange-600 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase" data-sd-id="72">Pedir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden bg-[#1A1D23] border border-white/5" data-sd-id="73">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-24 object-cover" data-sd-id="74">
+                        <div class="p-2.5" data-sd-id="75">
+                            <h3 class="text-[12px] font-bold" data-sd-id="76">Donuts Glacé</h3>
+                            <div class="mt-1 flex items-center justify-between" data-sd-id="77">
+                                <span class="text-xs font-bold text-gray-400" data-sd-id="78">R$ 18</span>
+                                <iconify-icon icon="lucide:plus-circle" class="text-orange-500 text-lg"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden bg-[#1A1D23] border border-white/5" data-sd-id="79">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-24 object-cover" data-sd-id="80">
+                        <div class="p-2.5" data-sd-id="81">
+                            <h3 class="text-[12px] font-bold" data-sd-id="82">Latte Art Special</h3>
+                            <div class="mt-1 flex items-center justify-between" data-sd-id="83">
+                                <span class="text-xs font-bold text-gray-400" data-sd-id="84">R$ 12</span>
+                                <iconify-icon icon="lucide:plus-circle" class="text-orange-500 text-lg"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Horizontal Combo Section -->
+            <section class="py-8 bg-[#15181E]" data-sd-id="85">
+                <div class="px-5 mb-5 flex items-center justify-between" data-sd-id="86">
+                    <h2 class="text-lg font-bold" data-sd-id="87">Combos com Desconto</h2>
+                    <a href="#" id="view-all-combos" class="text-xs font-bold text-orange-500 underline underline-offset-4" data-sd-id="88">Ver Todos</a>
+                </div>
+                <div class="flex gap-4 overflow-x-auto px-5 custom-scrollbar" data-sd-id="89">
+                    <div class="min-w-[280px] bg-[#1A1D23] rounded-2xl p-4 border-2 border-orange-500/20 relative" data-sd-id="90">
+                        <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-black px-2 py-0.5 rounded" data-sd-id="91">ECONOMIZE R$ 20</div>
+                        <div class="flex flex-col items-center text-center gap-3" data-sd-id="92">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0" data-sd-id="93">
+                                <img src="https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="94">
+                            </div>
+                            <div data-sd-id="95">
+                                <h3 class="text-sm font-bold leading-tight" data-sd-id="96">Combo Casal: 2 Pizzas + Refri</h3>
+                                <div class="flex items-baseline justify-center gap-2 mt-1" data-sd-id="97">
+                                    <span class="text-sm font-bold text-white" data-sd-id="98">R$ 129</span>
+                                    <span class="text-[10px] text-gray-500 line-through" data-sd-id="99">R$ 149</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="combo-btn-1" class="w-full mt-4 bg-white text-black text-xs font-bold py-2.5 rounded-xl hover:bg-orange-500 transition-colors" data-sd-id="100">ADICIONAR AO PEDIDO</button>
+                    </div>
+                    <div class="min-w-[280px] bg-[#1A1D23] rounded-2xl p-4 border border-white/5 relative" data-sd-id="101">
+                        <div class="flex flex-col items-center text-center gap-3" data-sd-id="102">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0" data-sd-id="103">
+                                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&amp;w=200&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover" data-sd-id="104">
+                            </div>
+                            <div data-sd-id="105">
+                                <h3 class="text-sm font-bold leading-tight" data-sd-id="106">Café da Manhã Completo</h3>
+                                <div class="flex items-baseline justify-center gap-2 mt-1" data-sd-id="107">
+                                    <span class="text-sm font-bold text-white" data-sd-id="108">R$ 45</span>
+                                    <span class="text-[10px] text-gray-500 line-through" data-sd-id="109">R$ 55</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="combo-btn-2" class="w-full mt-4 bg-white/10 text-white text-xs font-bold py-2.5 rounded-xl" data-sd-id="110">ADICIONAR AO PEDIDO</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-5 py-10" data-sd-id="111">
+                <h2 class="text-lg font-bold mb-5" data-sd-id="112">O que dizem nossos clientes</h2>
+                <div class="flex gap-4 overflow-x-auto custom-scrollbar pb-4" data-sd-id="113">
+                    <div class="min-w-[240px] bg-[#1A1D23] p-5 rounded-2xl border border-white/5" data-sd-id="114">
+                        <div class="flex flex-col items-center text-center gap-2 mb-3" data-sd-id="115">
+                            <img src="https://i.pravatar.cc/100?u=4" class="w-10 h-10 rounded-full border border-white/10" data-sd-id="116">
+                            <div data-sd-id="117">
+                                <p class="text-xs font-bold mb-1" data-sd-id="118">Mariana Silva</p>
+                                <div class="flex justify-center text-[10px] text-yellow-500" data-sd-id="119">
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[12px] text-center text-gray-400 leading-relaxed font-medium italic" data-sd-id="120">"A melhor pizza que já comi! A entrega foi super rápida e chegou quentinha."</p>
+                    </div>
+                    <div class="min-w-[240px] bg-[#1A1D23] p-5 rounded-2xl border border-white/5" data-sd-id="121">
+                        <div class="flex flex-col items-center text-center gap-2 mb-3" data-sd-id="122">
+                            <img src="https://i.pravatar.cc/100?u=5" class="w-10 h-10 rounded-full border border-white/10" data-sd-id="123">
+                            <div data-sd-id="124">
+                                <p class="text-xs font-bold mb-1" data-sd-id="125">Roberto G.</p>
+                                <div class="flex justify-center text-[10px] text-yellow-500" data-sd-id="126">
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                    <iconify-icon icon="material-symbols:star"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[12px] text-center text-gray-400 leading-relaxed font-medium italic" data-sd-id="127">"Os doces são obras de arte. O de brigadeiro gourmet é simplesmente divino!"</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Utilities List Rows -->
+            <section class="px-5 pb-8 flex flex-col gap-3" data-sd-id="128">
+                <a href="#" id="wifi-list-item" class="flex items-center justify-between bg-[#1A1D23] p-4 rounded-2xl border border-white/5 group hover:border-orange-500/50 transition-all" data-sd-id="129">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                            <iconify-icon icon="lucide:wifi" class="text-xl text-blue-400"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold">Wi-Fi Grátis</p>
+                            <p class="text-[10px] text-gray-500">Toque para ver QR Code</p>
+                        </div>
+                    </div>
+                    <iconify-icon icon="lucide:chevron-right" class="text-gray-600 group-hover:text-orange-500 transition-colors"></iconify-icon>
+                </a>
+                <a href="#" id="pix-list-item" class="flex items-center justify-between bg-[#1A1D23] p-4 rounded-2xl border border-white/5 group hover:border-orange-500/50 transition-all" data-sd-id="132">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center">
+                            <iconify-icon icon="ic:baseline-pix" class="text-xl text-teal-400"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold">Pagamento via PIX</p>
+                            <p class="text-[10px] text-gray-500">Toque para ver QR Code</p>
+                        </div>
+                    </div>
+                    <iconify-icon icon="lucide:chevron-right" class="text-gray-600 group-hover:text-orange-500 transition-colors"></iconify-icon>
+                </a>
+            </section>
+
+            <!-- Location Card -->
+            <section class="px-5 pb-32" data-sd-id="135">
+                <a href="https://maps.google.com" id="location-map-link" class="block bg-[#1A1D23] rounded-2xl overflow-hidden border border-white/5 relative" data-sd-id="136">
+                    <div class="h-24 w-full bg-slate-800 grayscale" data-sd-id="137">
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-50" data-sd-id="138">
+                    </div>
+                    <div class="p-4 flex items-center justify-between" data-sd-id="139">
+                        <div data-sd-id="140">
+                            <p class="text-xs font-bold" data-sd-id="141">Onde estamos</p>
+                            <p class="text-[10px] text-gray-400" data-sd-id="142">Rua da Gastronomia, 123 - Centro</p>
+                        </div>
+                        <iconify-icon icon="lucide:map-pin" class="text-orange-500 text-xl"></iconify-icon>
+                    </div>
+                </a>
+            </section>
+        </main>
+
+        <!-- Sticky WhatsApp CTA -->
+        <a href="https://wa.me/" id="whatsapp-float-cta" class="fixed bottom-8 right-6 z-[60] flex items-center gap-3 bg-green-500 text-white pl-4 pr-6 py-3 rounded-full shadow-2xl pulse-glow" data-sd-id="143">
+            <iconify-icon icon="ic:baseline-whatsapp" class="text-2xl"></iconify-icon>
+            <span class="text-sm font-black" data-sd-id="144">PEÇA AGORA</span>
+        </a>
+
+        <!-- Bottom Spacer for Floating Nav -->
+        <footer class="shrink-0 pb-[34px] flex flex-col items-center bg-[#0F1115]" data-sd-id="145">
+            <a href="#" id="footer-credit-link" class="flex items-center gap-1.5 text-gray-600 hover:text-gray-400 transition-colors py-4">
+                <iconify-icon icon="lucide:external-link" class="text-xs"></iconify-icon>
+                <span class="text-[10px] font-medium">Quer um biosite igual a este? Fale conosco</span>
+            </a>
+        </footer>
+    </div>
+
+</body></html>
